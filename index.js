@@ -1,15 +1,16 @@
-function takeANumber(line, person) {
-  line.push(person);
-  return `Welcome, ${person}. You are number ${line.length} in line.`;
+let number = 0;
+
+function takeANumber(line) {
+  number ++;
+  line.push(number);
+  return number;
 }
 
 function nowServing(line) {
   if(line.length === 0) {
     return "There is nobody waiting to be served!";
   } else {
-  	let firstCustomer = line[0];
-  	line.shift();
-    return `Currently serving ${firstCustomer}.`;
+    return `Currently serving ${line.shift()}.`;
   }
 }
 
@@ -32,11 +33,7 @@ function currentLine(line) {
 	if(line.length === 0) {
 		return "The line is currently empty.";
 	}
-	let string = "The line is currently:"
-	let numberedLine = line.map(function(name, index) {
-		return `${index + 1}. ${name}`;
-	}).join(", ");
-	return `${string} ${numberedLine}`;
+	return `The line is currently: ${line.join(", ")}`;
 }
 
 takeANumber(katzDeliLine, "Ada");
